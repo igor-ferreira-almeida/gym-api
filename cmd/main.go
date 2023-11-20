@@ -1,21 +1,25 @@
 package main
 
 import (
-	"github.com/go-chi/chi/v5"
-	"github.com/go-chi/chi/v5/middleware"
-	"github.com/rs/cors"
-	"net/http"
+	"fmt"
+	"github.com/gym-api/cmd/server"
+	"time"
 )
 
 func main() {
-	r := chi.NewRouter()
+	start := time.Now()
+	LinearSearch([]string{"1", "2", "3", "4", "5", "6"}, "7")
+	timeElapsed := time.Since(start)
+	fmt.Printf("linear search time elapsed: %s", timeElapsed)
+	// go bigqueue.Receive()
+	server.NewServer()
+}
 
-	// Use default options
-	r.Use(cors.Default().Handler)
-
-	r.Use(middleware.Logger)
-	r.Get("/", func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("welcome"))
-	})
-	http.ListenAndServe(":8080", r)
+func LinearSearch(array []string, targetValue string) int {
+	for guess := 0; guess < len(array); guess++ {
+		if array[guess] == targetValue {
+			return guess
+		}
+	}
+	return -1
 }
