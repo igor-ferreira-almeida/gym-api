@@ -1,0 +1,742 @@
+openapi: 3.0.3
+info:
+  title: Swagger Gym - OpenAPI 3.0
+  description: |-
+    This is a sample Pet Store Server based on the OpenAPI 3.0 specification.  You can find out more about
+    Swagger at [https://swagger.io](https://swagger.io). In the third iteration of the pet store, we've switched to the design first approach!
+    You can now help us improve the API whether it's by making changes to the definition itself or to the code.
+    That way, with time, we can improve the API in general, and expose some of the new features in OAS3.
+
+    _If you're looking for the Swagger 2.0/OAS 2.0 version of Petstore, then click [here](https://editor.swagger.io/?url=https://petstore.swagger.io/v2/swagger.yaml). Alternatively, you can load via the `Edit > Load Petstore OAS 2.0` menu option!_
+    
+    Some useful links:
+    - [The Pet Store repository](https://github.com/swagger-api/swagger-petstore)
+    - [The source API definition for the Pet Store](https://github.com/swagger-api/swagger-petstore/blob/master/src/main/resources/openapi.yaml)
+  termsOfService: http://swagger.io/terms/
+  contact:
+    email: apiteam@swagger.io
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.11
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io
+servers:
+  - url: http://localhost:8080
+tags:
+  - name: exercise
+    description: Everything about your Exercise
+    externalDocs:
+      description: Find out more
+      url: http://swagger.io
+paths:
+  /workouts:
+    post:
+      tags:
+        - workout
+      summary: Create a new workout in the store
+      description: Multiple status values can be provided with comma separated strings
+      operationId: addWorkout
+      requestBody:
+        description: Create a new exercise in the store
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Workout'
+            examples:
+              'Leg Day':
+                value:
+                  date: 2023-11-06T00:00:00.000000000Z
+                  exercises:
+                    - name: Leg Abduction (Machine)
+                      muscle_group: glute
+                      sets:
+                        - reps: 11
+                          weight: 20
+                        - reps: 12
+                          weight: 20
+                        - reps: 13
+                          weight: 20
+                        - reps: 13
+                          weight: 20
+                        - reps: 15
+                          weight: 20
+                        - reps: 11
+                          weight: 30
+                        - reps: 11
+                          weight: 30
+                        - reps: 13
+                          weight: 30
+                        - reps: 10
+                          weight: 40
+                        - reps: 9
+                          weight: 40
+                    - name: Leg Adduction (Machine)
+                      muscle_group: adductor
+                      sets:
+                        - reps: 10
+                          weight: 60
+                        - reps: 10
+                          weight: 60
+                        - reps: 10
+                          weight: 60
+                        - reps: 10
+                          weight: 60
+                        - reps: 10
+                          weight: 60
+                        - reps: 10
+                          weight: 60
+                        - reps: 10
+                          weight: 60
+                        - reps: 10
+                          weight: 60
+                        - reps: 10
+                          weight: 60
+                        - reps: 10
+                          weight: 60
+                    - name: Hip Thrust (Barbell)
+                      muscle_group: glute
+                      sets:
+                        - reps: 15
+                          weight: 80
+                        - reps: 13
+                          weight: 80
+                        - reps: 11
+                          weight: 120
+                        - reps: 10
+                          weight: 120
+                        - reps: 10
+                          weight: 140
+                    - name: Leg Extension (Unilateral)
+                      muscle_group: quadriceps
+                      sets:
+                        - reps: 15
+                          weight: 25
+                        - reps: 15
+                          weight: 25
+                        - reps: 12
+                          weight: 35
+                        - reps: 12
+                          weight: 35
+                        - reps: 8
+                          weight: 40
+                    - name: Squats
+                      muscle_group: quadriceps
+                      sets:
+                        - reps: 12
+                          weight: 30
+                        - reps: 10
+                          weight: 50
+                        - reps: 10
+                          weight: 70
+                        - reps: 7
+                          weight: 90
+                    - name: Bulgarian Split Squat
+                      muscle_group: quadriceps
+                      sets:
+                        - reps: 7
+                          weight: 90
+                        - reps: 7
+                          weight: 90
+                        - reps: 7
+                          weight: 24
+                        - reps: 7
+                          weight: 24
+                    - name: Calf Raises (Smith Machine)
+                      muscle_group: calf
+                      sets:
+                        - reps: 10
+                          weight: 40
+                        - reps: 10
+                          weight: 40
+                        - reps: 10
+                          weight: 40
+                        - reps: 10
+                          weight: 40
+                        - reps: 10
+                          weight: 40
+                        - reps: 10
+                          weight: 40
+                        - reps: 10
+                          weight: 40
+                        - reps: 10
+                          weight: 40
+                        - reps: 10
+                          weight: 40
+                        - reps: 10
+                          weight: 40
+                    - name: Seated Calf Raises
+                      muscle_group: calf
+                      sets:
+                        - reps: 10
+                          weight: 60
+                        - reps: 10
+                          weight: 60
+                        - reps: 10
+                          weight: 60
+                        - reps: 10
+                          weight: 60
+                        - reps: 10
+                          weight: 60
+                        - reps: 10
+                          weight: 60
+                        - reps: 10
+                          weight: 60
+                        - reps: 10
+                          weight: 60
+                        - reps: 10
+                          weight: 60
+                        - reps: 10
+                          weight: 60
+              'Chest Day':
+                value:
+                  date: 2023-11-07T00:00:00.000000000Z
+                  exercises:
+                    - name: Barbell Bench Press
+                      muscle_group: chest
+                      sets:
+                        - reps: 10
+                          weight: 40
+                        - reps: 10
+                          weight: 50
+                        - reps: 5
+                          weight: 60
+                        - reps: 4
+                          weight: 70
+                        - reps: 4
+                          weight: 70
+                        - reps: 4
+                          weight: 70
+                        - reps: 4
+                          weight: 70
+                        - reps: 4
+                          weight: 70
+                    - name: Incline Dumbbell Press
+                      muscle_group: chest
+                      sets:
+                        - reps: 10
+                          weight: 64
+                        - reps: 8
+                          weight: 64
+                        - reps: 7
+                          weight: 64
+                    - name: Incline Dumbbell Fly
+                      muscle_group: chest
+                      sets:
+                        - reps: 12
+                          weight: 40
+                        - reps: 12
+                          weight: 40
+                        - reps: 10
+                          weight: 40
+                    - name: Cable Crossover
+                      muscle_group: chest
+                      sets:
+                        - reps: 15
+                          weight: 20
+                        - reps: 15
+                          weight: 20
+                        - reps: 15
+                          weight: 20
+                        - reps: 15
+                          weight: 20
+                    - name: Barbell Close-Grip Bench Press
+                      muscle_group: triceps
+                      sets:
+                        - reps: 12
+                          weight: 40
+                        - reps: 12
+                          weight: 40
+                        - reps: 12
+                          weight: 40
+                        - reps: 8
+                          weight: 40
+                    - name: Cable Rope Push-Down
+                      muscle_group: triceps
+                      sets:
+                        - reps: 12
+                          weight: 40
+                        - reps: 12
+                          weight: 40
+                        - reps: 12
+                          weight: 40
+                        - reps: 8
+                          weight: 40
+                    - name: Barbell Skull Crusher
+                      muscle_group: triceps
+                      sets:
+                        - reps: 12
+                          weight: 40
+                        - reps: 12
+                          weight: 40
+                        - reps: 12
+                          weight: 40
+                        - reps: 8
+                          weight: 40
+                    - name: Elbow Plank
+                      muscle_group: Abs
+                      sets:
+                        - reps: 1
+                          weight: 40
+                        - reps: 1
+                          weight: 40
+                        - reps: 1
+                          weight: 40
+                        - reps: 1
+                          weight: 40
+                    - name: Incline Leg Raise
+                      muscle_group: Abs
+                      sets:
+                        - reps: 10
+                          weight: 8
+                        - reps: 10
+                          weight: 8
+                        - reps: 10
+                          weight: 8
+                        - reps: 10
+                          weight: 8
+              'Back Day':
+                value:
+                  date: 2023-11-08T00:00:00.000000000Z
+                  exercises:
+                    - name: Wide Grip Pull Down
+                      muscle_group: back
+                      sets:
+                        - reps: 15
+                          weight: 50
+                        - reps: 12
+                          weight: 60
+                        - reps: 10
+                          weight: 70
+                        - reps: 6
+                          weight: 80
+                    - name: Supinated Grip Pull Down
+                      muscle_group: back
+                      exercises:
+                       - reps: 15
+                         weight: 50
+                       - reps: 15
+                         weight: 50
+                       - reps: 10
+                         weight: 60
+                       - reps: 10
+                         weight: 60
+                    - name: V-Bar Close Grip Pull Down
+                      muscle_group: back
+                      exercises:
+                        - reps: 15
+                          weight: 50
+                        - reps: 15
+                          weight: 50
+                        - reps: 10
+                          weight: 60
+                        - reps: 10
+                          weight: 60
+                    - name: Barbell Row
+                      muscle_group: back
+                      exercises:
+                        - reps: 12
+                          weight: 40
+                        - reps: 12
+                          weight: 40
+                        - reps: 10
+                          weight: 50
+                        - reps: 8
+                          weight: 50
+                    - name: Single Arm Dumbbell Row
+                      muscle_group: back
+                      exercises:
+                        - reps: 12
+                          weight: 40
+                        - reps: 12
+                          weight: 40
+                        - reps: 10
+                          weight: 50
+                        - reps: 8
+                          weight: 50
+                    - name: Back Extension
+                      muscle_group: back
+                      exercises:
+                        - reps: 20
+                          weight: 1
+                        - reps: 20
+                          weight: 1
+                        - reps: 20
+                          weight: 1
+                        - reps: 20
+                          weight: 1
+                    - name: Cable Shrug
+                      muscle_group: trapezium
+                      exercises:
+                        - reps: 15
+                          weight: 80
+                        - reps: 15
+                          weight: 80
+                        - reps: 15
+                          weight: 80
+                        - reps: 15
+                          weight: 80
+              'Leg Day 2nd Option':
+                value:
+                  date: 2023-11-10T00:00:00.000000000Z
+                  exercises:
+                    - name: Leg Curl
+                      muscle_group: hamstrings
+                      sets:
+                        - reps: 15
+                          weight: 50
+                        - reps: 12
+                          weight: 60
+                    - name: Romanian Deadlift
+                      muscle_group: hamstrings
+                      sets:
+                        - reps: 15
+                          weight: 40
+                        - reps: 15
+                          weight: 40
+                        - reps: 15
+                          weight: 40
+                        - reps: 15
+                          weight: 40
+                    - name: Seated Leg Curl
+                      muscle_group: hamstrings
+                      sets:
+                        - reps: 12
+                          weight: 40
+                        - reps: 12
+                          weight: 40
+                        - reps: 12
+                          weight: 50
+                        - reps: 12
+                          weight: 50
+                    - name: Calf Raises (Smith Machine)
+                      muscle_group: calf
+                      sets:
+                        - reps: 10
+                          weight: 40
+                        - reps: 10
+                          weight: 40
+                        - reps: 10
+                          weight: 40
+                        - reps: 10
+                          weight: 40
+                        - reps: 10
+                          weight: 40
+                        - reps: 10
+                          weight: 40
+                        - reps: 10
+                          weight: 40
+                        - reps: 10
+                          weight: 40
+                        - reps: 10
+                          weight: 40
+                        - reps: 10
+                          weight: 40
+                    - name: Seated Calf Raises
+                      muscle_group: calf
+                      sets:
+                        - reps: 10
+                          weight: 60
+                        - reps: 10
+                          weight: 60
+                        - reps: 10
+                          weight: 60
+                        - reps: 10
+                          weight: 60
+                        - reps: 10
+                          weight: 60
+                        - reps: 10
+                          weight: 60
+                        - reps: 10
+                          weight: 60
+                        - reps: 10
+                          weight: 60
+                        - reps: 10
+                          weight: 60
+                        - reps: 10
+                          weight: 60
+              'Shoulders/Biceps Day':
+                value:
+                  date: 2023-11-11T00:00:00.000000000Z
+                  exercises:
+                    - name: Military Press
+                      muscle_group: shoulder
+                      sets:
+                        - reps: 15
+                          weight: 20
+                        - reps: 15
+                          weight: 20
+                        - reps: 15
+                          weight: 20
+                        - reps: 15
+                          weight: 20
+                    - name: Lateral Raises
+                      muscle_group: shoulder
+                      sets:
+                        - reps: 15
+                          weight: 24
+                        - reps: 15
+                          weight: 24
+                        - reps: 12
+                          weight: 28
+                        - reps: 7
+                          weight: 32
+                    - name: Front Raises
+                      muscle_group: shoulder
+                      sets:
+                        - reps: 12
+                          weight: 24
+                        - reps: 12
+                          weight: 24
+                        - reps: 12
+                          weight: 24
+                    - name: Reverse Fly
+                      muscle_group: shoulder
+                      sets:
+                        - reps: 15
+                          weight: 30
+                        - reps: 15
+                          weight: 30
+                        - reps: 12
+                          weight: 35
+                        - reps: 10
+                          weight: 40
+                    - name: Cable Shrug
+                      muscle_group: trapezium
+                      exercises:
+                        - reps: 15
+                          weight: 80
+                        - reps: 15
+                          weight: 80
+                        - reps: 15
+                          weight: 80
+                        - reps: 15
+                          weight: 80
+                    - name: Concentration Curl
+                      muscle_group: biceps
+                      exercises:
+                        - reps: 15
+                          weight: 12
+                        - reps: 15
+                          weight: 16
+                        - reps: 12
+                          weight: 20
+                        - reps: 10
+                          weight: 24
+                        - reps: 5
+                          weight: 26
+                    - name: Preacher Curl
+                      muscle_group: biceps
+                      exercises:
+                        - reps: 10
+                          weight: 30
+                        - reps: 10
+                          weight: 30
+                        - reps: 10
+                          weight: 30
+                        - reps: 9
+                          weight: 30
+                    - name: Seated dumbbell curl
+                      muscle_group: biceps
+                      exercises:
+                        - reps: 10
+                          weight: 30
+                        - reps: 10
+                          weight: 30
+                        - reps: 10
+                          weight: 30
+                        - reps: 9
+                          weight: 30
+                    - name: Cable Reverse Biceps Curl
+                      muscle_group: forearm
+                      exercises:
+                        - reps: 15
+                          weight: 30
+                        - reps: 15
+                          weight: 30
+                        - reps: 15
+                          weight: 30
+                        - reps: 15
+                          weight: 30
+                    - name: Seated Palms-down Wrist Curl
+                      muscle_group: forearm
+                      exercises:
+                        - reps: 10
+                          weight: 30
+                        - reps: 10
+                          weight: 30
+                        - reps: 10
+                          weight: 30
+                        - reps: 9
+                          weight: 30
+                    - name: Palms-up Wrist Curl
+                      muscle_group: forearm
+                      exercises:
+                        - reps: 10
+                          weight: 12
+                        - reps: 10
+                          weight: 12
+                        - reps: 10
+                          weight: 12
+                        - reps: 9
+                          weight: 12
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Exercise'
+          application/x-yaml:
+            schema:
+              $ref: '#/components/schemas/Exercise'
+        required: true
+      responses:
+        '201':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Exercise'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Exercise'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/Exercise'
+        '405':
+          description: Invalid input
+      security:
+        - petstore_auth:
+            - write:pets
+            - read:pets
+  /exercises:
+    post:
+      tags:
+        - exercises
+      summary: Create a new exercise in the store
+      description: Multiple status values can be provided with comma separated strings
+      operationId: addExercise
+      requestBody:
+        description: Create a new exercise in the store
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Exercise'
+            examples:
+                'Bench Press':
+                  value:
+                    name: Bench Press
+                    muscle_group: CHEST
+                'Squat':
+                  value:
+                    name: Squat
+                    muscle_group: LEGS
+                'Barbell Curl':
+                  value:
+                    name: Barbell Curl
+                    muscle_group: BICEPS
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Exercise'
+          application/x-yaml:
+            schema:
+              $ref: '#/components/schemas/Exercise'
+        required: true
+      responses:
+        '201':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Exercise'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Exercise'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/Exercise'
+        '405':
+          description: Invalid input
+      security:
+        - petstore_auth:
+            - write:pets
+            - read:pets
+    get:
+      tags:
+        - exercises
+      summary: Finds Pets by status
+      description: Multiple status values can be provided with comma separated strings
+      operationId: findExercisesByStatus
+      parameters:
+        - name: status
+          in: query
+          description: Status values that need to be considered for filter
+          required: false
+          explode: true
+          schema:
+            type: string
+            default: available
+            enum:
+              - available
+              - pending
+              - sold
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Exercise'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Exercise'
+        '400':
+          description: Invalid status value
+      security:
+        - petstore_auth:
+            - write:pets
+            - read:pets
+components:
+  schemas:
+    Workout:
+      type: object
+      properties:
+        Date:
+          type: string
+        Exercises:
+          type: array
+          properties:
+            Exercise:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: Bench Press
+                muscle_group:
+                  type: string
+                  enum:
+                    - BICEPS
+                    - TRICEPS
+                    - CHEST
+                    - BACK
+                    - LEGS
+                    - ABS
+                    - SHOULDER
+    Exercise:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Bench Press
+        muscle_group:
+          type: string
+          enum:
+            - BICEPS
+            - TRICEPS
+            - CHEST
+            - BACK
+            - LEGS
+            - ABS
+            - SHOULDER
