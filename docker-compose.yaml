@@ -1,0 +1,45 @@
+services:
+  swagger:
+    image: swaggerapi/swagger-ui:latest
+    restart: always
+    volumes:
+      - "./docs/specs/swagger.yaml:/app/swagger.yaml"
+    ports:
+      - 3000:8080
+    environment:
+      SWAGGER_JSON: /app/swagger.yaml
+#  rabbitmq:
+#    image: rabbitmq:3.11.14-management
+#    restart: always
+#    ports:
+#      - 5672:5672
+#      - 15672:15672
+#    volumes:
+#      - ~/.docker-data/rabbitmq/data/:/var/lib/rabbitmq/
+#      - ~/.docker-data/rabbitmq/log/:/var/log/rabbitmq
+#    networks:
+#      - rabbitmq_go_net
+#  redis:
+#    image: redis:latest
+#    command: redis-server
+#    ports:
+#      - "6379:6379"
+#    volumes:
+#      - ./.docker-data/dynamodb:/data
+#      - ./.docker-data/dynamodb/config:/usr/local/etc/redis/redis.config
+  dynamodb:
+    command: "-jar DynamoDBLocal.jar -sharedDb -dbPath ./data"
+    image: "amazon/dynamodb-local:latest"
+    container_name: dynamodb-local
+    ports:
+      - "8000:8000"
+    volumes:
+      - "./docker/dynamodb:/home/dynamodblocal/data"
+    working_dir: /home/dynamodblocal
+    environment:
+      AWS_ACCESS_KEY_ID: "dummy"
+      AWS_SECRET_ACCESS_KEY: "dummy"
+      REGION: "us-east-1"
+networks:
+  rabbitmq_go_net:
+    driver: bridge
