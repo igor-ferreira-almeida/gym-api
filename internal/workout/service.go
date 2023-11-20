@@ -4,7 +4,6 @@ import (
 	"context"
 	"github.com/google/wire"
 	"github.com/gym-api/internal/platform/dynamodb"
-	"time"
 )
 
 type (
@@ -43,8 +42,7 @@ func (s serviceImpl) Get(ctx context.Context, id string) (Workout, error) {
 	if err != nil {
 		return Workout{}, err
 	}
-	date, err := time.Parse("2006-01-02", entity.ID)
-	return Workout{Date: date}, nil
+	return entity.ToWorkout()
 }
 
 var providerService = wire.NewSet(

@@ -49,7 +49,7 @@ func (h Handler) Add(w http.ResponseWriter, r *http.Request) {
 }
 
 func (h Handler) Get(w http.ResponseWriter, r *http.Request) {
-	id := chi.URLParam(r, "id")
+	id := chi.URLParam(r, "date")
 
 	workout, err := h.service.Get(r.Context(), id)
 	if err != nil {

@@ -87,9 +87,9 @@ func (client LocalDynamoDB[T]) Set(ctx context.Context, entity T) (T, error) {
 	return entity, err
 }
 
-func (k LocalDynamoDB[T]) Remove(ctx context.Context, key string) error {
-	_, err := k.dynamodbClient.DeleteItem(ctx, &dynamodb.DeleteItemInput{
-		TableName: k.tableName,
+func (client LocalDynamoDB[T]) Remove(ctx context.Context, key string) error {
+	_, err := client.dynamodbClient.DeleteItem(ctx, &dynamodb.DeleteItemInput{
+		TableName: client.tableName,
 		Key: map[string]types.AttributeValue{
 			"id": &types.AttributeValueMemberS{Value: key},
 		},

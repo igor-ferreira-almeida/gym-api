@@ -607,6 +607,43 @@ paths:
         - petstore_auth:
             - write:pets
             - read:pets
+  /workouts/{date}:
+    get:
+      tags:
+        - workout
+      summary: Finds Workout by date
+      description: Multiple status values can be provided with comma separated strings
+      operationId: findWorkoutByDate
+      parameters:
+        - name: date
+          in: path
+          description: date of workout to return
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Workout'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Workout'
+        '400':
+          description: Invalid date value
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Workout'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Workout'
+      security:
+        - petstore_auth:
+            - write:workouts
+            - read:workouts
   /exercises:
     post:
       tags:

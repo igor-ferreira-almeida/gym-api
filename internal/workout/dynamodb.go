@@ -21,6 +21,19 @@ func (e Entity) GetPartitionKey() string {
 	return e.ID
 }
 
+func (e Entity) ToWorkout() (Workout, error) {
+	date, err := time.Parse("2006-01-02", e.ID)
+	exercises := make([]Exercise, len(e.Exercises))
+	for index, exercise := range e.Exercises {
+		exercises[index].Name = exercise.Name
+		exercises[index].MuscleGroup = exercise.MuscleGroup
+	}
+	return Workout{
+		Date:      date,
+		Exercises: exercises,
+	}, err
+}
+
 func NewEntity(w Workout) Entity {
 	exercises := make([]ExerciseEntity, len(w.Exercises))
 	for i, e := range w.Exercises {
