@@ -33,15 +33,15 @@ func (h Handler) Add(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		w.Write([]byte("invalid body"))
 	}
-	var workout Workout
-	json.Unmarshal(body, &workout)
+	var request Request
+	json.Unmarshal(body, &request)
 
-	exercise, err := h.service.Add(r.Context(), workout)
+	workout, err := h.service.Add(r.Context(), request.ToModel())
 	if err != nil {
 		w.Write([]byte("service error"))
 	}
 
-	respBody, err := json.Marshal(exercise)
+	respBody, err := json.Marshal(workout)
 	if err != nil {
 		w.Write([]byte("error in response"))
 	}
@@ -49,9 +49,9 @@ func (h Handler) Add(w http.ResponseWriter, r *http.Request) {
 }
 
 func (h Handler) Get(w http.ResponseWriter, r *http.Request) {
-	id := chi.URLParam(r, "date")
+	date := chi.URLParam(r, "date")
 
-	workout, err := h.service.Get(r.Context(), id)
+	workout, err := h.service.Get(r.Context(), date)
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		w.Write([]byte("service error"))

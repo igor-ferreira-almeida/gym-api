@@ -30,5 +30,5 @@ func WorkoutHandler(r *chi.Mux) {
 	}
 
 	r.Post("/workouts", h.Add)
-	r.Get("/workouts/{id}", h.Get)
+	r.Get("/workouts/{date}", h.Get)
 }
